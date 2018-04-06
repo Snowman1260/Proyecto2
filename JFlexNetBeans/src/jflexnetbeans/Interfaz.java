@@ -6,9 +6,11 @@
 package jflexnetbeans;
 
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.io.Reader;
@@ -128,6 +130,8 @@ public class Interfaz extends javax.swing.JFrame {
         
         String archivo_entrada = jtxtf_cadena.getText(); 
         File archivo = new File(archivo_entrada);
+
+        
 //        PrintWriter writer;
 //        try {
 //            writer = new PrintWriter(archivo);
@@ -137,32 +141,64 @@ public class Interfaz extends javax.swing.JFrame {
 //            Logger.getLogger(Interfaz.class.getName()).log(Level.SEVERE, null, ex);    
 //        }
         
+        File f;
+        f = new File("errores.txt");
+        FileWriter w = new FileWriter(f);
+        BufferedWriter bw = new BufferedWriter(w);
+        PrintWriter wr = new PrintWriter(bw);
+        wr.write("ERRORES \r\n");
+        
+        File miniPHP;
+        miniPHP = new File("miniPHP.out");
+        FileWriter escritorphp = new FileWriter(miniPHP);
+        BufferedWriter bufferedwriterphp = new BufferedWriter(escritorphp);
+        PrintWriter printwriterphp = new PrintWriter(bufferedwriterphp);
+        printwriterphp.write("MINIPHP \r\n");
+               
         Reader reader = new BufferedReader(new FileReader(archivo_entrada));
+        
         Lexer lexer = new Lexer(reader);
         String resul = "";
+        String error = "";
         int count = 1;
         while (true) {            
             Token token = lexer.yylex();
             if (token == null) {
-                resul = resul + "EOF";
+                resul = resul + "\r\n" + "EOF";
                 jtxta_resul.setText(resul);
+                
+                printwriterphp.write(resul);
+                printwriterphp.close();
+                bw.close();
+                
+                wr.write(error);
+                wr.close();
+                bw.close();
                 return;
             }
             switch(token){
                 case ERROR:
-                    resul = resul + lexer.lexeme + "No reconocido en la linea " + count + "\n";                  
+                    error = error + lexer.lexeme + "No reconocido en la linea " + count + "\r\n";
+                    
+                    
                     break;
                 case BASE_DE_DATOS:
-                    resul = resul + lexer.lexeme.toUpperCase() + "\n";
+                    resul = resul + lexer.lexeme.toUpperCase() + "\r\n";
                     count = count +1;
                     break;
                 default:
-                    resul = resul + lexer.lexeme.toLowerCase() + "\n";
+                    resul = resul + lexer.lexeme.toLowerCase() + "\r\n";
                     count = count +1;
                     
                     
             }
-        }
+        
+        
+        
+            
+    }
+        
+        
     }
     
     /**
