@@ -128,8 +128,41 @@ public class Interfaz extends javax.swing.JFrame {
     public void Analizar() throws IOException{
         
         
+        
+        String text = "";
+        
         String archivo_entrada = jtxtf_cadena.getText(); 
         File archivo = new File(archivo_entrada);
+        
+        BufferedReader bf = new BufferedReader(new FileReader(archivo));
+        String temp = "";
+        String bfRead;
+        while ((bfRead = bf.readLine())!= null) {            
+            temp = temp + bfRead + "\r\n";
+        }
+
+        text = temp.toLowerCase();
+        
+//        String entradavacia = "";
+//        
+        File Entrada;
+        Entrada = new File("cadena2.txt");
+        FileWriter EntradaW = new FileWriter(Entrada);
+        BufferedWriter EscrituraW = new BufferedWriter(EntradaW);
+        PrintWriter FinalW = new PrintWriter(EscrituraW);
+//        int var;
+//        Reader readerminusculas = new BufferedReader(new FileReader(archivo_entrada));
+//        var = readerminusculas.read();
+//        while (var > 0) { 
+//            entradavacia = entradavacia + readerminusculas.;
+//            var = readerminusculas.read();
+//            
+//        }
+       
+        FinalW.write(text);
+                EscrituraW.close();
+                EntradaW.close();
+        
 
         
 //        PrintWriter writer;
@@ -155,7 +188,7 @@ public class Interfaz extends javax.swing.JFrame {
         PrintWriter printwriterphp = new PrintWriter(bufferedwriterphp);
         printwriterphp.write("MINIPHP \r\n");
                
-        Reader reader = new BufferedReader(new FileReader(archivo_entrada));
+        Reader reader = new BufferedReader(new FileReader("cadena2.txt"));
         
         Lexer lexer = new Lexer(reader);
         String resul = "";
