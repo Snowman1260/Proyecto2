@@ -33,15 +33,15 @@ class Lexer {
    * Translates characters to character classes
    */
   private static final String ZZ_CMAP_PACKED = 
-    "\11\0\1\4\1\20\1\21\1\21\1\20\22\0\1\4\1\0\1\0"+
-    "\1\0\1\0\1\0\1\0\1\0\1\6\1\7\1\13\1\11\1\0"+
-    "\1\12\1\15\1\14\1\2\1\2\6\2\2\2\1\0\1\16\1\0"+
-    "\1\17\1\0\1\0\1\0\1\1\1\1\2\1\1\1\1\1\21\1"+
+    "\11\0\1\4\1\16\1\17\1\17\1\16\22\0\1\4\1\0\1\0"+
+    "\1\15\1\0\1\0\1\0\1\0\1\3\1\3\1\11\1\7\1\0"+
+    "\1\10\1\13\1\12\1\2\1\2\6\2\2\2\1\0\1\0\1\0"+
+    "\1\14\1\0\1\0\1\0\1\1\1\1\2\1\1\1\1\1\21\1"+
     "\1\1\2\1\1\3\1\0\1\3\1\0\1\1\1\0\1\1\1\1"+
-    "\1\1\1\1\1\1\1\10\1\1\1\1\1\5\1\1\1\1\1\1"+
+    "\1\1\1\1\1\1\1\6\1\1\1\1\1\5\1\1\1\1\1\1"+
     "\1\1\1\1\1\1\1\1\1\1\1\1\1\1\1\1\1\1\1\1"+
-    "\1\1\1\1\1\1\1\1\1\3\1\0\1\3\7\0\1\21\u1fa2\0"+
-    "\1\21\1\21\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\udfe6\0";
+    "\1\1\1\1\1\1\1\1\1\3\1\0\1\3\7\0\1\17\u1fa2\0"+
+    "\1\17\1\17\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\udfe6\0";
 
   /** 
    * Translates characters to character classes
@@ -54,9 +54,9 @@ class Lexer {
   private static final int [] ZZ_ACTION = zzUnpackAction();
 
   private static final String ZZ_ACTION_PACKED_0 =
-    "\1\0\3\1\1\2\1\3\1\1\1\4\1\5\1\6"+
-    "\2\1\4\0\1\7\1\0\1\10\1\0\1\11\1\12"+
-    "\1\13";
+    "\1\0\2\1\1\2\1\3\1\1\1\4\1\5\1\6"+
+    "\2\1\1\7\2\0\1\10\1\0\1\7\1\11\1\12"+
+    "\2\0\1\13\1\7";
 
   private static int [] zzUnpackAction() {
     int [] result = new int[23];
@@ -84,9 +84,9 @@ class Lexer {
   private static final int [] ZZ_ROWMAP = zzUnpackRowMap();
 
   private static final String ZZ_ROWMAP_PACKED_0 =
-    "\0\0\0\22\0\44\0\66\0\22\0\22\0\110\0\132"+
-    "\0\132\0\22\0\154\0\176\0\44\0\220\0\66\0\242"+
-    "\0\44\0\264\0\22\0\306\0\242\0\264\0\22";
+    "\0\0\0\20\0\40\0\20\0\20\0\60\0\100\0\100"+
+    "\0\20\0\120\0\140\0\160\0\40\0\200\0\20\0\220"+
+    "\0\240\0\20\0\200\0\260\0\300\0\300\0\20";
 
   private static int [] zzUnpackRowMap() {
     int [] result = new int[23];
@@ -112,16 +112,17 @@ class Lexer {
   private static final int [] ZZ_TRANS = zzUnpackTrans();
 
   private static final String ZZ_TRANS_PACKED_0 =
-    "\1\2\1\3\1\4\1\5\1\6\1\7\2\5\1\3"+
-    "\1\10\1\11\1\12\1\13\2\2\1\14\1\6\24\0"+
-    "\1\15\3\0\1\15\1\16\1\0\1\15\13\0\1\17"+
-    "\12\0\1\20\5\0\1\15\3\0\1\15\1\16\1\0"+
-    "\1\21\13\0\1\17\33\0\1\22\24\0\1\23\11\0"+
-    "\1\24\14\0\1\25\17\0\17\22\1\26\20\0\1\27"+
-    "\3\0";
+    "\2\2\1\3\1\4\1\5\1\6\1\2\1\7\1\10"+
+    "\1\11\1\12\1\2\1\13\1\14\1\5\23\0\1\15"+
+    "\10\0\1\16\12\0\1\17\13\0\1\15\26\0\1\20"+
+    "\1\21\21\0\1\22\4\0\2\14\1\0\3\14\7\0"+
+    "\1\14\3\0\1\23\16\0\2\20\1\0\3\20\2\0"+
+    "\1\24\4\0\1\20\1\0\1\25\2\21\1\25\3\21"+
+    "\5\25\1\26\1\25\1\14\13\0\1\27\5\0\14\25"+
+    "\1\26\1\25\2\0";
 
   private static int [] zzUnpackTrans() {
-    int [] result = new int[216];
+    int [] result = new int[208];
     int offset = 0;
     offset = zzUnpackTrans(ZZ_TRANS_PACKED_0, offset, result);
     return result;
@@ -159,8 +160,8 @@ class Lexer {
   private static final int [] ZZ_ATTRIBUTE = zzUnpackAttribute();
 
   private static final String ZZ_ATTRIBUTE_PACKED_0 =
-    "\1\0\1\11\2\1\2\11\3\1\1\11\2\1\4\0"+
-    "\1\1\1\0\1\11\1\0\2\1\1\11";
+    "\1\0\1\11\1\1\2\11\3\1\1\11\3\1\2\0"+
+    "\1\11\1\0\1\1\1\11\1\1\2\0\1\1\1\11";
 
   private static int [] zzUnpackAttribute() {
     int [] result = new int[23];
@@ -581,23 +582,23 @@ public String lexeme;
             }
           case 17: break;
           case 7: 
-            { return COND;
+            { lexeme=yytext(); return PRUEBA;
             }
           case 18: break;
           case 8: 
-            { return IGUAL;
+            { return COND;
             }
           case 19: break;
           case 9: 
-            { lexeme=yytext(); return REAL;
+            { return IGUAL;
             }
           case 20: break;
           case 10: 
-            { return ASIG;
+            { lexeme=yytext(); return REAL;
             }
           case 21: break;
           case 11: 
-            { lexeme=yytext(); return PRUEBA;
+            { return ASIG;
             }
           case 22: break;
           default:

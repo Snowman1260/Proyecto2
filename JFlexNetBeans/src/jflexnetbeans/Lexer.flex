@@ -22,6 +22,9 @@ PALABRASRESERVADAS = "__halt_compiler()"|"abstract"|"array()"|"as"|
 "private"|"protected"|"public"|"require"|"require_once"|"return"|"static"|"switch"|"throw"|"trait"|
 "try"|"unset()"|"use"|"var"|"while"|"xor"|"yield"  
 
+ENTRADA = [<]{WHITE}*[?]{WHITE}*"php"
+SALIDA = [?]{WHITE}*[>]
+
 IDENTIDAD = "+"{VARIABLE}
 NEGACION = "-"{VARIABLE}
 ADICION = {VARIABLE}{WHITE}*"+"{WHITE}*{VARIABLE}
@@ -88,6 +91,11 @@ VARIABLE_PREDETERMINADAFINAL2 = {VARIABLES_PREDETERMINADAS1}{WHITE}*"="{WHITE}*"
 FUNCTION = {L}+{L}*{WHITE}*(\(){WHITE}*({VARIABLE}{WHITE}*",")*({VARIABLE})?(\))(\{)({VARIABLEFINAL}|{PALABRASRESERVADAS}{WHITE}*{VARIABLE}";"|{STRING}|{WHITE})*(\})
 IDENTIFICADOR = {L}+{L}*(\()(\))";"
 
+COMENTARIOS = "//"({L}|{D}|{WHITE})* | "/*"({L}|{D}|{WHITE})*"*/" | "#"({L}|{D}|{WHITE})*
+
+BASE_DE_DATOS = {VARIABLE}(\[)(\'){L}(\')(\])
+
+
 
 
 %{
@@ -103,6 +111,6 @@ public String lexeme;
 "-" {return MENOS;}
 "if" {return COND;}
 [-+]?{D}+\.{D}+                 {lexeme=yytext(); return REAL;}
-{IDENTIFICADOR}                 {lexeme=yytext(); return PRUEBA;}
+{COMENTARIOS}                 {lexeme=yytext(); return PRUEBA;}
 {P} {return SEP;}
 . {return ERROR;}
