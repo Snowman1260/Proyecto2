@@ -135,6 +135,7 @@ public class Interfaz extends javax.swing.JFrame {
         Reader reader = new BufferedReader(new FileReader("cadena.txt"));
         Lexer lexer = new Lexer(reader);
         String resul = "";
+        int count = 1;
         while (true) {            
             Token token = lexer.yylex();
             if (token == null) {
@@ -144,13 +145,15 @@ public class Interfaz extends javax.swing.JFrame {
             }
             switch(token){
                 case ERROR:
-                    resul = resul + "Simbolo no reconocido\n";
+                    resul = resul + lexer.lexeme + "No reconocido en la linea " + count + "\n";                  
                     break;
-                case ID: case INT: case REAL:
-                    resul = resul + "Token: " + token + " " + lexer.lexeme + "\n";
+                case BASE_DE_DATOS:
+                    resul = resul + lexer.lexeme.toUpperCase() + "\n";
+                    count = count +1;
                     break;
                 default:
-                    resul = resul + "Token:  " + token + "\n";
+                    resul = resul + lexer.lexeme.toLowerCase() + "\n";
+                    count = count +1;
                     
                     
             }
