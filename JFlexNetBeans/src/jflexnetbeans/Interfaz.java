@@ -14,6 +14,7 @@ import java.io.PrintWriter;
 import java.io.Reader;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JFileChooser;
 
 /**
  *
@@ -46,7 +47,7 @@ public class Interfaz extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jLabel1.setText("Ingresar Cadena:");
+        jLabel1.setText("Ingresar archivo txt");
 
         jtxtf_cadena.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -74,16 +75,16 @@ public class Interfaz extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 376, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel1)
+                            .addComponent(jLabel2))
+                        .addGap(57, 57, 57)
                         .addComponent(jtxtf_cadena))
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel2)
-                        .addGap(27, 27, 27)
                         .addComponent(jbtn_analizar)
-                        .addGap(0, 163, Short.MAX_VALUE)))
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -93,13 +94,10 @@ public class Interfaz extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jtxtf_cadena, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel1))
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(18, 18, 18)
-                        .addComponent(jbtn_analizar))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(42, 42, 42)
-                        .addComponent(jLabel2)))
+                .addGap(10, 10, 10)
+                .addComponent(jbtn_analizar)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 158, Short.MAX_VALUE)
                 .addContainerGap())
@@ -121,18 +119,25 @@ public class Interfaz extends javax.swing.JFrame {
             System.out.println(ex.getMessage());
         }
     }//GEN-LAST:event_jbtn_analizarActionPerformed
+
+        
+    
     
     public void Analizar() throws IOException{
-        File archivo = new File("cadena.txt");
-        PrintWriter writer;
-        try {
-            writer = new PrintWriter(archivo);
-            writer.print(jtxtf_cadena.getText());
-            writer.close();
-        } catch(FileNotFoundException ex) {
-            Logger.getLogger(Interfaz.class.getName()).log(Level.SEVERE, null, ex);    
-        }
-        Reader reader = new BufferedReader(new FileReader("cadena.txt"));
+        
+        
+        String archivo_entrada = jtxtf_cadena.getText(); 
+        File archivo = new File(archivo_entrada);
+//        PrintWriter writer;
+//        try {
+//            writer = new PrintWriter(archivo);
+//            writer.print(jtxtf_cadena.getText());
+//            writer.close();
+//        } catch(FileNotFoundException ex) {
+//            Logger.getLogger(Interfaz.class.getName()).log(Level.SEVERE, null, ex);    
+//        }
+        
+        Reader reader = new BufferedReader(new FileReader(archivo_entrada));
         Lexer lexer = new Lexer(reader);
         String resul = "";
         int count = 1;
