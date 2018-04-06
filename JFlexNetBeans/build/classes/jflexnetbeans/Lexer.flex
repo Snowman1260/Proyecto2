@@ -61,7 +61,7 @@ EXPONENT_DNUM = [+-]?(({LNUM}|{DNUM})[Ee][+-]?{LNUM})
 FLOAT = {LNUM} | {DNUM} | {EXPONENT_DNUM}
 
 STRING = "echo"{WHITE}*((\")({L}|{WHITE}|{D})*(\")|{VARIABLE}){WHITE}*";"
-VARIABLEFINAL = {VARIABLE}{WHITE}*"="{WHITE}*({INT}|{FLOAT}|{LOGICOS}|{VARIABLE})";"
+VARIABLEFINAL = {VARIABLE}{WHITE}*"="{WHITE}*({INT}|{FLOAT}|{LOGICOS}|{VARIABLE}){WHITE}*";"
 VARIABLEPARAESTRUCTURAS = ({INT}|{FLOAT}|{LOGICOS})
 COMPARADORES= "=="|"==="|"!="|"<>"|"<"|">"|"<="|">="|"<=>"|"??"
 
@@ -71,6 +71,8 @@ DEFINE = "define"{WHITE}*(\(){WHITE}*(\"){L}*(\"){WHITE}*","{WHITE}*(\")({L}|{WH
 IF = "if"{WHITE}*(\(){WHITE}*{VARIABLE}{WHITE}*{COMPARADORES}{WHITE}*({VARIABLE}|{VARIABLEPARAESTRUCTURAS}){WHITE}*(\)){WHITE}*(\{){WHITE}*({VARIABLEFINAL}|{STRING}|{PALABRASRESERVADAS}{WHITE}*{VARIABLE}";"|{WHITE})*{WHITE}*(\})
 ELSEIF = "elseif"{WHITE}*(\(){WHITE}*{VARIABLE}{WHITE}*{COMPARADORES}{WHITE}*({VARIABLE}|{VARIABLEPARAESTRUCTURAS}){WHITE}*(\)){WHITE}*(\{){WHITE}*({VARIABLEFINAL}|{PALABRASRESERVADAS}{WHITE}*{VARIABLE}";"|{STRING}|{WHITE})*{WHITE}*(\})
 ELSE = "else"{WHITE}*(\{){WHITE}*({VARIABLEFINAL}|{STRING}|{PALABRASRESERVADAS}{WHITE}*{VARIABLE}";"|{WHITE})*{WHITE}*(\})
+
+IFINAL = {IF}+{ELSEIF}*{ELSE}*
 
 WHILE = "while"{WHITE}*(\(){WHITE}*{VARIABLE}{WHITE}*{COMPARADORES}{WHITE}*({VARIABLE}|{VARIABLEPARAESTRUCTURAS}){WHITE}*(\)){WHITE}*(\{){WHITE}*({VARIABLEFINAL}|{STRING}|{PALABRASRESERVADAS}{WHITE}*{VARIABLE}";"|{WHITE})*{WHITE}*(\})
 
@@ -89,11 +91,11 @@ VARIABLE_PREDETERMINADAFINAL= {VARIABLE_PREDETERMINADAS2}{WHITE}*"="{WHITE}*{VAR
 VARIABLE_PREDETERMINADAFINAL2 = {VARIABLES_PREDETERMINADAS1}{WHITE}*"="{WHITE}*"&$http"{L}*";"
 
 FUNCTION = {L}+{L}*{WHITE}*(\(){WHITE}*({VARIABLE}{WHITE}*",")*({VARIABLE})?(\))(\{)({VARIABLEFINAL}|{PALABRASRESERVADAS}{WHITE}*{VARIABLE}";"|{STRING}|{WHITE})*(\})
-IDENTIFICADOR = {L}+{L}*(\()(\))";"
+IDENTIFICADOR2 = {L}+{L}*(\()(\))";"
 
 COMENTARIOS = "//"({L}|{D}|{WHITE})* | "/*"({L}|{D}|{WHITE})*"*/" | "#"({L}|{D}|{WHITE})*
 
-BASE_DE_DATOS = {VARIABLE}(\[)(\'){L}(\')(\])
+BASE_DE_DATOS = {VARIABLE}(\[)(\'){L}*(\')(\])
 
 
 
@@ -111,6 +113,27 @@ public String lexeme;
 "-" {return MENOS;}
 "if" {return COND;}
 [-+]?{D}+\.{D}+                 {lexeme=yytext(); return REAL;}
-{COMENTARIOS}                 {lexeme=yytext(); return PRUEBA;}
+{PALABRASRESERVADAS}                                        {lexeme=yytext(); return PALABRASRESERVADAS;}
+{ENTRADA}                                                   {lexeme=yytext(); return ENTRADA;}
+{SALIDA}                                                    {lexeme=yytext(); return SALIDA;}
+{OPERADORES_ARITMETICOS}|{OPERADORES_LOGICOS}               {lexeme=yytext(); return OPERADORES;}
+{STRING}                                                    {lexeme=yytext(); return STRING;}
+{VARIABLEFINAL}                                             {lexeme=yytext(); return VARIABLEFINAL;}
+{IFINAL}                                                    {lexeme=yytext(); return IFINAL;}
+{COMENTARIOS}                                               {lexeme=yytext(); return COMENTARIOS;}
+{DEFINE}                                                    {lexeme=yytext(); return DEFINE;}
+{WHILE}                                                     {lexeme=yytext(); return WHILE;}
+{DOWHILE}                                                   {lexeme=yytext(); return DOWHILE;}
+{FOR}                                                       {lexeme=yytext(); return FOR;}
+{INCLUDE}                                                   {lexeme=yytext(); return INCLUDE;}
+{SWITCH}                                                    {lexeme=yytext(); return SWITCH;}
+{VARIABLE_PREDETERMINADAFINAL}                              {lexeme=yytext(); return VARIABLE_PREDETERMINADAFINAL;}
+{VARIABLE_PREDETERMINADAFINAL2}                             {lexeme=yytext(); return VARIABLE_PREDETERMINADA2;}
+{FUNCTION}                                                  {lexeme=yytext(); return FUNCTION;}
+{IDENTIFICADOR2}                                            {lexeme=yytext(); return IDENTIFICADOR;}
+{BASE_DE_DATOS}                                             {lexeme=yytext(); return BASE_DE_DATOS;}
+
+
+
 {P} {return SEP;}
 . {return ERROR;}
