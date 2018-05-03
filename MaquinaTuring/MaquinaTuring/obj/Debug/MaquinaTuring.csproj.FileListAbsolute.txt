@@ -1,0 +1,10 @@
+c:\users\stevi\source\repos\MaquinaTuring\MaquinaTuring\bin\Debug\MaquinaTuring.exe.config
+c:\users\stevi\source\repos\MaquinaTuring\MaquinaTuring\bin\Debug\MaquinaTuring.exe
+c:\users\stevi\source\repos\MaquinaTuring\MaquinaTuring\bin\Debug\MaquinaTuring.pdb
+c:\users\stevi\source\repos\MaquinaTuring\MaquinaTuring\obj\Debug\MaquinaTuring.csprojResolveAssemblyReference.cache
+c:\users\stevi\source\repos\MaquinaTuring\MaquinaTuring\obj\Debug\MaquinaTuring.Form1.resources
+c:\users\stevi\source\repos\MaquinaTuring\MaquinaTuring\obj\Debug\MaquinaTuring.Properties.Resources.resources
+c:\users\stevi\source\repos\MaquinaTuring\MaquinaTuring\obj\Debug\MaquinaTuring.csproj.GenerateResource.Cache
+c:\users\stevi\source\repos\MaquinaTuring\MaquinaTuring\obj\Debug\MaquinaTuring.csproj.CoreCompileInputs.cache
+c:\users\stevi\source\repos\MaquinaTuring\MaquinaTuring\obj\Debug\MaquinaTuring.exe
+c:\users\stevi\source\repos\MaquinaTuring\MaquinaTuring\obj\Debug\MaquinaTuring.pdb
