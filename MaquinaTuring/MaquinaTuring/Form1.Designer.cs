@@ -36,6 +36,7 @@
             this.rdbMultiplicacion = new System.Windows.Forms.RadioButton();
             this.txtCadena = new System.Windows.Forms.TextBox();
             this.DGVCadena = new System.Windows.Forms.DataGridView();
+            this.MaquinaTuring = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.DGVCadena)).BeginInit();
             this.SuspendLayout();
             // 
@@ -114,11 +115,19 @@
             // DGVCadena
             // 
             this.DGVCadena.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.DGVCadena.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.MaquinaTuring});
             this.DGVCadena.Location = new System.Drawing.Point(19, 132);
             this.DGVCadena.Name = "DGVCadena";
             this.DGVCadena.RowTemplate.Height = 24;
             this.DGVCadena.Size = new System.Drawing.Size(541, 213);
             this.DGVCadena.TabIndex = 7;
+            // 
+            // MaquinaTuring
+            // 
+            this.MaquinaTuring.HeaderText = "MaquinaTuring";
+            this.MaquinaTuring.Name = "MaquinaTuring";
+            this.MaquinaTuring.Width = 200;
             // 
             // Form1
             // 
@@ -151,6 +160,7 @@
         private System.Windows.Forms.RadioButton rdbMultiplicacion;
         private System.Windows.Forms.TextBox txtCadena;
         private System.Windows.Forms.DataGridView DGVCadena;
+        private System.Windows.Forms.DataGridViewTextBoxColumn MaquinaTuring;
     }
 }
 

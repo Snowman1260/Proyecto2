@@ -19,14 +19,19 @@ namespace MaquinaTuring
 
         private void btnRun_Click(object sender, EventArgs e)
         {
+            
+            int n = DGVCadena.Rows.Count;
+
             string Cadena = txtCadena.Text;
             string Resultado = "";
-
+            char[] Caracteres = new char[Cadena.Length];
             for (int i = 0; i < Cadena.Length; i++)
             {
-
+                DGVCadena.Rows.Add();
+                Caracteres[i] = Convert.ToChar(Cadena.Substring(i,1));  
+                DGVCadena[0, i].Value = Convert.ToString(Caracteres[i]);
             }
-
+            
             if (rdbPalindromas.Checked)
             {
                 MessageBox.Show("Palindromos escogido");
@@ -42,7 +47,11 @@ namespace MaquinaTuring
 
             if (rdbSuma.Checked)
             {
+
                 MessageBox.Show("Suma escogido");
+                Suma Suma = new Suma();
+                Resultado = Suma.Sumador(Cadena);
+                MessageBox.Show(Resultado);
             }
 
             if (rdbResta.Checked)
