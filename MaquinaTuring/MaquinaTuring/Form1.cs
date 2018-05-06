@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Drawing;
 
 namespace MaquinaTuring
 {
@@ -22,7 +23,7 @@ namespace MaquinaTuring
             
             int n = DGVCadena.Rows.Count;
 
-            string Cadena = txtCadena.Text;
+            string Cadena = "###"+txtCadena.Text+"###";
             string Resultado = "";
             char[] Caracteres = new char[Cadena.Length];
             for (int i = 0; i < Cadena.Length; i++)
@@ -36,7 +37,7 @@ namespace MaquinaTuring
             {
                 MessageBox.Show("Palindromos escogido");
                 Palindromos Palindro = new Palindromos();
-                Resultado = Palindro.Palicroquet(Cadena);
+                Resultado = Palindro.Palicroquet(Cadena, DGVCadena);
                 MessageBox.Show(Resultado);
             }
 
@@ -50,7 +51,7 @@ namespace MaquinaTuring
 
                 MessageBox.Show("Suma escogido");
                 Suma Suma = new Suma();
-                Resultado = Suma.Sumador(Cadena);
+                Resultado = Suma.Sumador(Cadena, DGVCadena);
                 MessageBox.Show(Resultado);
             }
 

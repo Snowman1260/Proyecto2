@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
+using System.Drawing;
 
 namespace MaquinaTuring
 {
@@ -14,12 +16,13 @@ namespace MaquinaTuring
         //public string arreglo[];
         public int apuntador = 0;
         public static char[] Digitos;
+        static DataGridView DGV;
 
-        public String Sumador(String cadena)
+        public String Sumador(String cadena, DataGridView DGVForm)
         {
             
             Cadena = cadena;
-            
+            DGV = DGVForm;
             decodificar(Cadena);
             return Cadena;
         }
@@ -30,6 +33,7 @@ namespace MaquinaTuring
             for (int i = 0; i < dec.Length; i++)
             {
                 Digitos[i] = Convert.ToChar(dec.Substring(i, 1));
+                
             }
 
             q0();
@@ -37,12 +41,26 @@ namespace MaquinaTuring
 
         public void q0()
         {
+            
             temp = Convert.ToString(Digitos[apuntador]);
             if (temp == "1")
             {
+
                 temp = "0";
-                apuntador++;
+                mod();
+                apuntador++;       
                 q1();
+            }
+            else if (temp == "#")
+            {
+                temp = "#";
+                mod();
+                apuntador++;
+                q0();
+            }
+            else
+            {
+                Cadena = "Error en" + temp;
             }
         }
 
@@ -52,14 +70,21 @@ namespace MaquinaTuring
             if (temp == "1")
             {
                 temp = "1";
-                apuntador++;
+                mod();
+                Right();
                 q1();
             }
-            if (temp == "+")
+            else if (temp == "+")
             {
                 temp = "1";
-                apuntador++;
+                mod();
+                Right();
                 q2();
+            }
+            else
+            {
+                Left();
+                Cadena = "Error en" + temp;
             }
         }
         public void q2()
@@ -68,7 +93,8 @@ namespace MaquinaTuring
             if (temp == "1")
             {
                 temp = "1";
-                apuntador++;
+                mod();
+                Right();
                 q3();
             }
         }
@@ -78,13 +104,15 @@ namespace MaquinaTuring
             if (temp == "1")
             {
                 temp = "1";
-                apuntador++;
+                mod();
+                Right();
                 q3();
             }
-            if (temp == "=")
+            else if (temp == "=")
             {
                 temp = "#";
-                apuntador++;
+                mod();
+                Right();
                 q4();
             }
         }
@@ -101,7 +129,17 @@ namespace MaquinaTuring
         {
             apuntador--;
         }
+
+
         
+        public void mod()
+        {
+            //DGV[0, apuntador].Value.ToString().Replace(" ",temp
+            DGV[0, apuntador].Value = temp;
+            DGV.Rows[apuntador].Cells[0].Style.BackColor = Color.LightBlue;
+            //DGV.RowsDefaultCellStyle.ForeColor = Color.LightBlue;
+            DGV.Refresh();
+        }
 
     }
 
