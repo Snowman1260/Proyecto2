@@ -23,7 +23,7 @@ namespace MaquinaTuring
             
             int n = DGVCadena.Rows.Count;
 
-            string Cadena = "###"+txtCadena.Text+"###";
+            string Cadena = "######"+txtCadena.Text+"#####################################";
             string Resultado = "";
             char[] Caracteres = new char[Cadena.Length];
             for (int i = 0; i < Cadena.Length; i++)
@@ -44,6 +44,9 @@ namespace MaquinaTuring
             if (rdbCopia.Checked)
             {
                 MessageBox.Show("Copia escogido");
+                Copia Copia = new Copia();
+                Resultado = Copia.Copiador(Cadena, DGVCadena);
+                MessageBox.Show(Resultado);
             }
 
             if (rdbSuma.Checked)
@@ -58,11 +61,17 @@ namespace MaquinaTuring
             if (rdbResta.Checked)
             {
                 MessageBox.Show("Resta escogido");
+                Restador Resta = new Restador();
+                Resultado = Resta.Resta(Cadena, DGVCadena);
+                MessageBox.Show(Resultado);
             }
 
             if (rdbMultiplicacion.Checked)
             {
                 MessageBox.Show("Multiplicacion escogido");
+                Multiplicacion Multi = new Multiplicacion();
+                Resultado = Multi.Multiplicador(Cadena, DGVCadena);
+                MessageBox.Show(Resultado);
             }
         }
 

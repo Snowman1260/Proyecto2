@@ -14,7 +14,7 @@ namespace MaquinaTuring
         public static int longitud;
         public string resultado = "";
         //public string arreglo[];
-        public int apuntador = 0;
+        public int apuntador = 6;
         public static char[] Digitos;
         static DataGridView DGV;
 
@@ -48,14 +48,14 @@ namespace MaquinaTuring
 
                 temp = "0";
                 mod();
-                apuntador++;       
+                Right();     
                 q1();
             }
             else if (temp == "#")
             {
                 temp = "#";
                 mod();
-                apuntador++;
+                Right();
                 q0();
             }
             else
@@ -83,7 +83,6 @@ namespace MaquinaTuring
             }
             else
             {
-                Left();
                 Cadena = "Error en" + temp;
             }
         }
@@ -96,6 +95,10 @@ namespace MaquinaTuring
                 mod();
                 Right();
                 q3();
+            }
+            else
+            {
+                Cadena = "Error en" + temp;
             }
         }
         public void q3()
@@ -114,6 +117,10 @@ namespace MaquinaTuring
                 mod();
                 Right();
                 q4();
+            }
+            else
+            {
+                Cadena = "Error en" + temp;
             }
         }
         public void q4()
@@ -135,8 +142,11 @@ namespace MaquinaTuring
         public void mod()
         {
             //DGV[0, apuntador].Value.ToString().Replace(" ",temp
+            Digitos[apuntador] = Convert.ToChar(temp);
             DGV[0, apuntador].Value = temp;
+            DGV.Rows[apuntador-1].Cells[0].Style.BackColor = Color.White;
             DGV.Rows[apuntador].Cells[0].Style.BackColor = Color.LightBlue;
+            DGV.Rows[apuntador+1].Cells[0].Style.BackColor = Color.White;
             //DGV.RowsDefaultCellStyle.ForeColor = Color.LightBlue;
             DGV.Refresh();
         }

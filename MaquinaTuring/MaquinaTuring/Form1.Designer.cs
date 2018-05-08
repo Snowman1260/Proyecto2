@@ -120,7 +120,7 @@
             this.DGVCadena.Location = new System.Drawing.Point(19, 132);
             this.DGVCadena.Name = "DGVCadena";
             this.DGVCadena.RowTemplate.Height = 24;
-            this.DGVCadena.Size = new System.Drawing.Size(541, 213);
+            this.DGVCadena.Size = new System.Drawing.Size(514, 467);
             this.DGVCadena.TabIndex = 7;
             // 
             // MaquinaTuring
@@ -133,7 +133,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(598, 423);
+            this.ClientSize = new System.Drawing.Size(579, 636);
             this.Controls.Add(this.DGVCadena);
             this.Controls.Add(this.txtCadena);
             this.Controls.Add(this.rdbMultiplicacion);

@@ -8,7 +8,7 @@ using System.Drawing;
 
 namespace MaquinaTuring
 {
-    public class Palindromos
+    public class Copia
     {
         public static string Cadena, Cadena2, temp;
         public static int longitud;
@@ -18,7 +18,7 @@ namespace MaquinaTuring
         public static char[] Digitos;
         static DataGridView DGV;
 
-        public String Palicroquet(String cadena, DataGridView DGVForm)
+        public String Copiador(String cadena, DataGridView DGVForm)
         {
 
             Cadena = cadena;
@@ -46,31 +46,52 @@ namespace MaquinaTuring
             if (temp == "a")
             {
 
-                temp = "#";
+                temp = "x";
                 mod();
                 Right();
                 q1();
             }
             else if (temp == "b")
             {
-                temp = "#";
+                temp = "y";
+                mod();
+                Right();
+                q3();
+            }
+            else if (temp == "c")
+            {
+                temp = "z";
                 mod();
                 Right();
                 q4();
             }
-            else if (temp == "c")
+            else if (temp == "x")
             {
-                temp = "#";
+                temp = "x";
                 mod();
                 Right();
-                q7();
+                q0();
+            }
+            else if (temp == "y")
+            {
+                temp = "y";
+                mod();
+                Right();
+                q0();
+            }
+            else if (temp == "z")
+            {
+                temp = "z";
+                mod();
+                Right();
+                q0();
             }
             else if (temp == "#")
             {
                 temp = "#";
                 mod();
                 Left();
-                q10();
+                q5();
             }
             else
             {
@@ -83,6 +104,7 @@ namespace MaquinaTuring
             temp = Convert.ToString(Digitos[apuntador]);
             if (temp == "a")
             {
+
                 temp = "a";
                 mod();
                 Right();
@@ -102,9 +124,30 @@ namespace MaquinaTuring
                 Right();
                 q1();
             }
+            else if (temp == "x")
+            {
+                temp = "x";
+                mod();
+                Right();
+                q1();
+            }
+            else if (temp == "y")
+            {
+                temp = "y";
+                mod();
+                Right();
+                q1();
+            }
+            else if (temp == "z")
+            {
+                temp = "z";
+                mod();
+                Right();
+                q1();
+            }
             else if (temp == "#")
             {
-                temp = "#";
+                temp = "x";
                 mod();
                 Left();
                 q2();
@@ -119,17 +162,53 @@ namespace MaquinaTuring
             temp = Convert.ToString(Digitos[apuntador]);
             if (temp == "a")
             {
-                temp = "#";
+
+                temp = "a";
                 mod();
                 Left();
-                q3();
+                q2();
+            }
+            else if (temp == "b")
+            {
+                temp = "b";
+                mod();
+                Left();
+                q2();
+            }
+            else if (temp == "c")
+            {
+                temp = "c";
+                mod();
+                Left();
+                q2();
+            }
+            else if (temp == "x")
+            {
+                temp = "x";
+                mod();
+                Left();
+                q2();
+            }
+            else if (temp == "y")
+            {
+                temp = "y";
+                mod();
+                Left();
+                q2();
+            }
+            else if (temp == "z")
+            {
+                temp = "z";
+                mod();
+                Left();
+                q2();
             }
             else if (temp == "#")
             {
                 temp = "#";
                 mod();
-                Left();
-                q10();
+                Right();
+                q0();
             }
             else
             {
@@ -141,31 +220,57 @@ namespace MaquinaTuring
             temp = Convert.ToString(Digitos[apuntador]);
             if (temp == "a")
             {
+
                 temp = "a";
                 mod();
-                Left();
+                Right();
                 q3();
             }
             else if (temp == "b")
             {
                 temp = "b";
                 mod();
-                Left();
+                Right();
                 q3();
             }
             else if (temp == "c")
             {
                 temp = "c";
                 mod();
-                Left();
+                Right();
+                q3();
+            }
+            else if (temp == "x")
+            {
+                temp = "x";
+                mod();
+                Right();
+                q3();
+            }
+            else if (temp == "y")
+            {
+                temp = "y";
+                mod();
+                Right();
+                q3();
+            }
+            else if (temp == "z")
+            {
+                temp = "z";
+                mod();
+                Right();
                 q3();
             }
             else if (temp == "#")
             {
-                temp = "#";
+                temp = "y";
                 mod();
-                Right();
-                q0();
+                Left();
+                q2();
+            }
+            else
+            {
+                Cadena = "Error en" + temp;
             }
         }
         public void q4()
@@ -173,6 +278,7 @@ namespace MaquinaTuring
             temp = Convert.ToString(Digitos[apuntador]);
             if (temp == "a")
             {
+
                 temp = "a";
                 mod();
                 Right();
@@ -192,12 +298,33 @@ namespace MaquinaTuring
                 Right();
                 q4();
             }
+            else if (temp == "x")
+            {
+                temp = "x";
+                mod();
+                Right();
+                q4();
+            }
+            else if (temp == "y")
+            {
+                temp = "y";
+                mod();
+                Right();
+                q4();
+            }
+            else if (temp == "z")
+            {
+                temp = "z";
+                mod();
+                Right();
+                q4();
+            }
             else if (temp == "#")
             {
-                temp = "#";
+                temp = "z";
                 mod();
                 Left();
-                q5();
+                q2();
             }
             else
             {
@@ -207,148 +334,43 @@ namespace MaquinaTuring
         public void q5()
         {
             temp = Convert.ToString(Digitos[apuntador]);
-            if (temp == "b")
+            if (temp == "x")
             {
-                temp = "#";
+
+                temp = "a";
                 mod();
                 Left();
-                q3();
+                q5();
             }
+            else if (temp == "y")
+            {
+                temp = "b";
+                mod();
+                Left();
+                q5();
+            }
+            else if (temp == "z")
+            {
+                temp = "c";
+                mod();
+                Left();
+                q5();
+            }
+
             else if (temp == "#")
             {
                 temp = "#";
                 mod();
-                Left();
-                q10();
+                Right();
+                q6();
             }
+
             else
             {
                 Cadena = "Error en" + temp;
             }
         }
         public void q6()
-        {
-            temp = Convert.ToString(Digitos[apuntador]);
-            if (temp == "a")
-            {
-                temp = "a";
-                mod();
-                Left();
-                q6();
-            }
-            else if (temp == "b")
-            {
-                temp = "b";
-                mod();
-                Left();
-                q6();
-            }
-            else if (temp == "c")
-            {
-                temp = "c";
-                mod();
-                Left();
-                q6();
-            }
-            else if (temp == "#")
-            {
-                temp = "#";
-                mod();
-                Right();
-                q0();
-            }
-        }
-        public void q7()
-        {
-            temp = Convert.ToString(Digitos[apuntador]);
-            if (temp == "a")
-            {
-                temp = "a";
-                mod();
-                Right();
-                q7();
-            }
-            else if (temp == "b")
-            {
-                temp = "b";
-                mod();
-                Right();
-                q7();
-            }
-            else if (temp == "c")
-            {
-                temp = "c";
-                mod();
-                Right();
-                q7();
-            }
-            else if (temp == "#")
-            {
-                temp = "#";
-                mod();
-                Left();
-                q8();
-            }
-            else
-            {
-                Cadena = "Error en" + temp;
-            }
-        }
-        public void q8()
-        {
-            temp = Convert.ToString(Digitos[apuntador]);
-            if (temp == "c")
-            {
-                temp = "#";
-                mod();
-                Left();
-                q9();
-            }
-            else if (temp == "#")
-            {
-                temp = "#";
-                mod();
-                Left();
-                q10();
-            }
-            else
-            {
-                Cadena = "Error en" + temp;
-            }
-        }
-        public void q9()
-        {
-            temp = Convert.ToString(Digitos[apuntador]);
-            if (temp == "a")
-            {
-                temp = "a";
-                mod();
-                Left();
-                q9();
-            }
-            else if (temp == "b")
-            {
-                temp = "b";
-                mod();
-                Left();
-                q9();
-            }
-            else if (temp == "c")
-            {
-                temp = "c";
-                mod();
-                Left();
-                q9();
-            }
-            else if (temp == "#")
-            {
-                temp = "#";
-                mod();
-                Right();
-                q0();
-            }
-        }
-        public void q10()
         {
             Cadena = "Bien";
         }
