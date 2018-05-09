@@ -37,6 +37,8 @@
             this.txtCadena = new System.Windows.Forms.TextBox();
             this.DGVCadena = new System.Windows.Forms.DataGridView();
             this.MaquinaTuring = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.label1 = new System.Windows.Forms.Label();
+            this.lblEstados = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.DGVCadena)).BeginInit();
             this.SuspendLayout();
             // 
@@ -109,7 +111,7 @@
             // 
             this.txtCadena.Location = new System.Drawing.Point(19, 85);
             this.txtCadena.Name = "txtCadena";
-            this.txtCadena.Size = new System.Drawing.Size(541, 22);
+            this.txtCadena.Size = new System.Drawing.Size(314, 22);
             this.txtCadena.TabIndex = 6;
             // 
             // DGVCadena
@@ -129,11 +131,31 @@
             this.MaquinaTuring.Name = "MaquinaTuring";
             this.MaquinaTuring.Width = 200;
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(358, 85);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(59, 17);
+            this.label1.TabIndex = 8;
+            this.label1.Text = "Estados";
+            // 
+            // lblEstados
+            // 
+            this.lblEstados.AutoSize = true;
+            this.lblEstados.Location = new System.Drawing.Point(423, 85);
+            this.lblEstados.Name = "lblEstados";
+            this.lblEstados.Size = new System.Drawing.Size(27, 17);
+            this.lblEstados.TabIndex = 9;
+            this.lblEstados.Text = "Q0";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(579, 636);
+            this.Controls.Add(this.lblEstados);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.DGVCadena);
             this.Controls.Add(this.txtCadena);
             this.Controls.Add(this.rdbMultiplicacion);
@@ -161,6 +183,8 @@
         private System.Windows.Forms.TextBox txtCadena;
         private System.Windows.Forms.DataGridView DGVCadena;
         private System.Windows.Forms.DataGridViewTextBoxColumn MaquinaTuring;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label lblEstados;
     }
 }
 

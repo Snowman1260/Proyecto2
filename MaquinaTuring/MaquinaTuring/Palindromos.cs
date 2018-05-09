@@ -5,22 +5,24 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Drawing;
+using System.Threading;
 
 namespace MaquinaTuring
 {
     public class Palindromos
     {
-        public static string Cadena, Cadena2, temp;
+        public static string Cadena, temp, Estados;
         public static int longitud;
         public string resultado = "";
         //public string arreglo[];
         public int apuntador = 6;
         public static char[] Digitos;
         static DataGridView DGV;
+        //static Label Cadena2;
 
-        public String Palicroquet(String cadena, DataGridView DGVForm)
+        public String Palicroquet(String cadena, DataGridView DGVForm, String Cadena2)
         {
-
+            Cadena2 = Estados;
             Cadena = cadena;
             DGV = DGVForm;
             decodificar(Cadena);
@@ -29,6 +31,7 @@ namespace MaquinaTuring
 
         public void decodificar(String dec)
         {
+            
             Digitos = new char[dec.Length];
             for (int i = 0; i < dec.Length; i++)
             {
@@ -41,11 +44,11 @@ namespace MaquinaTuring
 
         public void q0()
         {
-
+            Estados = "q0";
             temp = Convert.ToString(Digitos[apuntador]);
             if (temp == "a")
             {
-
+                
                 temp = "#";
                 mod();
                 Right();
@@ -80,7 +83,10 @@ namespace MaquinaTuring
 
         public void q1()
         {
+            Estados = "q1";
             temp = Convert.ToString(Digitos[apuntador]);
+            
+
             if (temp == "a")
             {
                 temp = "a";
@@ -374,6 +380,7 @@ namespace MaquinaTuring
             DGV.Rows[apuntador + 1].Cells[0].Style.BackColor = Color.White;
             //DGV.RowsDefaultCellStyle.ForeColor = Color.LightBlue;
             DGV.Refresh();
+            Thread.Sleep(1000);
         }
 
     }

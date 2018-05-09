@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Drawing;
+using System.Threading;
 
 namespace MaquinaTuring
 {
@@ -49,7 +50,7 @@ namespace MaquinaTuring
                 temp = "x";
                 mod();
                 Right();
-                q0();
+                q1();
             }
             else
             {
@@ -142,7 +143,7 @@ namespace MaquinaTuring
             }
             else if (temp == "-")
             {
-                temp = "-";
+                temp = "0";
                 mod();
                 Right();
                 q7();
@@ -289,6 +290,7 @@ namespace MaquinaTuring
             DGV.Rows[apuntador + 1].Cells[0].Style.BackColor = Color.White;
             //DGV.RowsDefaultCellStyle.ForeColor = Color.LightBlue;
             DGV.Refresh();
+            Thread.Sleep(1000);
         }
 
     }

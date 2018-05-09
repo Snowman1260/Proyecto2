@@ -20,8 +20,9 @@ namespace MaquinaTuring
 
         private void btnRun_Click(object sender, EventArgs e)
         {
-            
+
             int n = DGVCadena.Rows.Count;
+            lblEstados.Text = "";
 
             string Cadena = "######"+txtCadena.Text+"#####################################";
             string Resultado = "";
@@ -37,7 +38,7 @@ namespace MaquinaTuring
             {
                 MessageBox.Show("Palindromos escogido");
                 Palindromos Palindro = new Palindromos();
-                Resultado = Palindro.Palicroquet(Cadena, DGVCadena);
+                Resultado = Palindro.Palicroquet(Cadena, DGVCadena, lblEstados.Text);
                 MessageBox.Show(Resultado);
             }
 
