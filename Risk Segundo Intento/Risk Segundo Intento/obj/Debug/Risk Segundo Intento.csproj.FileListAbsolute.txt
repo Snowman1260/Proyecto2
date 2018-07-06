@@ -1,0 +1,10 @@
+c:\users\stevi\source\repos\Risk Segundo Intento\Risk Segundo Intento\bin\Debug\Risk Segundo Intento.exe.config
+c:\users\stevi\source\repos\Risk Segundo Intento\Risk Segundo Intento\bin\Debug\Risk Segundo Intento.exe
+c:\users\stevi\source\repos\Risk Segundo Intento\Risk Segundo Intento\bin\Debug\Risk Segundo Intento.pdb
+c:\users\stevi\source\repos\Risk Segundo Intento\Risk Segundo Intento\obj\Debug\Risk Segundo Intento.csprojAssemblyReference.cache
+c:\users\stevi\source\repos\Risk Segundo Intento\Risk Segundo Intento\obj\Debug\Risk_Segundo_Intento.Form1.resources
+c:\users\stevi\source\repos\Risk Segundo Intento\Risk Segundo Intento\obj\Debug\Risk_Segundo_Intento.Properties.Resources.resources
+c:\users\stevi\source\repos\Risk Segundo Intento\Risk Segundo Intento\obj\Debug\Risk Segundo Intento.csproj.GenerateResource.cache
+c:\users\stevi\source\repos\Risk Segundo Intento\Risk Segundo Intento\obj\Debug\Risk Segundo Intento.csproj.CoreCompileInputs.cache
+c:\users\stevi\source\repos\Risk Segundo Intento\Risk Segundo Intento\obj\Debug\Risk Segundo Intento.exe
+c:\users\stevi\source\repos\Risk Segundo Intento\Risk Segundo Intento\obj\Debug\Risk Segundo Intento.pdb
