@@ -46,6 +46,14 @@ namespace Risk_Segundo_Intento
 
         public string enseñar;
 
+        //Variable Flag para agregar mierdas de tropas
+
+        public int AgregarTropasIdeaRoma1;
+        public int AgregarTropasIdeaRoma2;
+        public int NumeroTotal;
+        public int AgregarTropasAlTurno = 0;
+
+        
 
         public Form1()
         {
@@ -62,6 +70,13 @@ namespace Risk_Segundo_Intento
 
         private void btnTurnoSiguiente_Click(object sender, EventArgs e)
         {
+            clicks = 0;
+            troopOffset = 0;
+
+            ContadorP = 0;
+            ContadorIA = 0;
+
+            AgregarTropasAlTurno = 0;
 
             //Turnos Turno = new Turnos();
 
@@ -69,6 +84,10 @@ namespace Risk_Segundo_Intento
 
 
             PasarTurno();
+
+            NumeroDeTropasAAgregar();
+
+            lblAgregarTropasTotales.Text = Convert.ToString(AgregarTropasAlTurno);
             
 
         }
@@ -144,8 +163,7 @@ namespace Risk_Segundo_Intento
         public void AgregarSoldadosP(Button Posicion)
         {
 
-            if (lblTurno.Text =="1")
-            {
+
                 if (ContadorP < 10)
                 {
                     NumeroBoton = Convert.ToInt32(Posicion.Text);
@@ -157,48 +175,236 @@ namespace Risk_Segundo_Intento
                 {
                     MessageBox.Show("Se ha excedido de las tropas");
                 }
-            }
+
+                
+            
 
         }
-
+        int troopOffset = 0;
+        int posx = -1;
+        int posy = -1;
+        int clicks = 0;
         private void btnP1FirstCountry_Click(object sender, EventArgs e)
         {
-            AgregarSoldadosP(MatrizBotones[0, 0]);
+            if (Turnos > 1)
+            {
+                
+                if (clicks == 0)
+                {
+                    posx = 0;
+                    posy = 0;
+                }
+                pasarTropas(0, 0);
+            }
+            else
+            {
+                AgregarSoldadosP(MatrizBotones[0, 0]);
+            }
+            clicks++;
+        }
+        private int[,] moves(int x, int y)
+        {
+            int[,] moves = new int[2,8];
+            moves[0, 0] = x + 1;
+            moves[1, 0] = y - 1;
+            moves[0, 1] = x + 1;
+            moves[1, 1] = y;
+            moves[0, 2] = x + 1;
+            moves[1, 2] = y + 1;
+            moves[0, 3] = x - 1;
+            moves[1, 3] = y - 1;
+            moves[0, 4] = x - 1;
+            moves[1, 4] = y;
+            moves[0, 5] = x - 1;
+            moves[1, 5] = y + 1;
+            moves[0, 6] = x;
+            moves[1, 6] = y - 1;
+            moves[0, 7] = x;
+            moves[1, 7] = y + 1;
+            return moves;
+        }
+        private bool checkMoves(int x, int y, int j, int k)
+        {
+            bool flag = false;
+            int[,] posibleMoves = moves( j , k );
+            for (int i = 0; i < 8; i++)
+            {
+                if (posibleMoves[0,i] == x && posibleMoves[1,i] == y)
+                {
+                    flag = true;
+                    break;
+                }
+            }
+            return flag;
+        }
+        private void pasarTropas(int x, int y)
+        {
+            
+            if (posx != x || posy != y)
+            {
+                if (checkMoves(x, y, posx, posy) == true)
+                {
+                    if (MatrizBotones[x, y].BackColor == MatrizBotones[posx, posy].BackColor)
+                    {
+                        MatrizBotones[x, y].Text = (Convert.ToInt32(MatrizBotones[x, y].Text) + troopOffset).ToString();
+                    }
+                    else
+                    {
+                        if (troopOffset > Convert.ToInt32(MatrizBotones[x, y].Text))
+                        {
+                            MatrizBotones[x, y].BackColor = MatrizBotones[posx, posy].BackColor;
+                        }
+                        else
+                        {
+
+                        }
+                        MatrizBotones[x, y].Text = (Math.Abs((Convert.ToInt32(MatrizBotones[x, y].Text) - troopOffset))).ToString();
+                    }
+                    troopOffset = 0;
+                }
+                else
+                {
+                    MessageBox.Show("Elija una opcion correcta");
+                }
+            }
+            else
+            {
+                troopOffset++;
+                MatrizBotones[posx, posy].Text = (Convert.ToInt32(MatrizBotones[posx, posy].Text) - 1).ToString();
+            }
         }
 
         private void btnP1SecondCountry_Click(object sender, EventArgs e)
         {
-            AgregarSoldadosP(MatrizBotones[0, 1]);
+            if (Turnos > 1)
+            {
+                if (clicks == 0)
+                {
+                    posx = 0;
+                    posy = 1;
+                }
+                pasarTropas(0, 1);
+            }
+            else
+            {
+                AgregarSoldadosP(MatrizBotones[0, 1]);
+            }
+            clicks++;
+            //AgregarSoldadosP(MatrizBotones[0, 1]);
         }
 
         private void btnP1ThirdCountry_Click(object sender, EventArgs e)
         {
-            AgregarSoldadosP(MatrizBotones[0, 2]);
+            if (Turnos > 1)
+            {
+                if (clicks == 0)
+                {
+                    posx = 0;
+                    posy = 2;
+                }
+                pasarTropas(0, 2);
+            }
+            else
+            {
+                AgregarSoldadosP(MatrizBotones[0, 2]);
+            }
+            clicks++;
+            //AgregarSoldadosP(MatrizBotones[0, 2]);
         }
 
         private void btnP1FourthCountry_Click(object sender, EventArgs e)
         {
-            AgregarSoldadosP(MatrizBotones[0, 3]);
+            if (Turnos > 1)
+            {
+                if (clicks == 0)
+                {
+                    posx = 0;
+                    posy = 3;
+                }
+                pasarTropas(0, 3);
+            }
+            else
+            {
+                AgregarSoldadosP(MatrizBotones[0, 3]);
+            }
+            clicks++;
+            //AgregarSoldadosP(MatrizBotones[0, 3]);
         }
 
         private void btnIaP1_Click(object sender, EventArgs e)
         {
-            AgregarSoldadosIA(MatrizBotones[4,0]);
+            if (Turnos > 1)
+            {
+                if (clicks == 0)
+                {
+                    posx = 4;
+                    posy = 0;
+                }
+                pasarTropas(4, 0);
+            }
+            else
+            {
+                AgregarSoldadosP(MatrizBotones[4, 0]);
+            }
+            clicks++;
+            //AgregarSoldadosIA(MatrizBotones[4,0]);
         }
 
         private void btnIaP2_Click(object sender, EventArgs e)
         {
-            AgregarSoldadosIA(MatrizBotones[4, 1]);
+            if (Turnos > 1)
+            {
+                if (clicks == 0)
+                {
+                    posx = 4;
+                    posy = 1;
+                }
+                pasarTropas(4, 1);
+            }
+            else
+            {
+                AgregarSoldadosP(MatrizBotones[4, 1]);
+            }
+            clicks++;
+            //AgregarSoldadosIA(MatrizBotones[4, 1]);
         }
 
         private void btnIaP3_Click(object sender, EventArgs e)
         {
-            AgregarSoldadosIA(MatrizBotones[4, 2]);
+            if (Turnos > 1)
+            {
+                if (clicks == 0)
+                {
+                    posx = 4;
+                    posy = 2;
+                }
+                pasarTropas(4, 2);
+            }
+            else
+            {
+                AgregarSoldadosP(MatrizBotones[4, 2]);
+            }
+            clicks++;
+            //AgregarSoldadosIA(MatrizBotones[4, 2]);
         }
 
         private void btnIaP4_Click(object sender, EventArgs e)
         {
-            AgregarSoldadosIA(MatrizBotones[4, 3]);
+            if (Turnos > 1)
+            {
+                if (clicks == 0)
+                {
+                    posx = 4;
+                    posy = 3;
+                }
+                pasarTropas(4, 3);
+            }
+            else
+            {
+                AgregarSoldadosP(MatrizBotones[4, 3]);
+            }
+            clicks++;
+            //AgregarSoldadosIA(MatrizBotones[4, 3]);
         }
 
         public void AgregarSoldadosIA(Button Posicion)
@@ -237,8 +443,22 @@ namespace Risk_Segundo_Intento
 
         private void btn01_Click(object sender, EventArgs e)
         {
-            TemporalPosicionXPrimero = 1;
-            TemporalPosicionYPrimero = 0;
+            if (Turnos > 1)
+            {
+                if (clicks == 0)
+                {
+                    posx = 1;
+                    posy = 0;
+                }
+                pasarTropas(1, 0);
+            }
+            else
+            {
+                AgregarSoldadosP(MatrizBotones[1, 0]);
+            }
+            clicks++;
+            //TemporalPosicionXPrimero = 1;
+            //TemporalPosicionYPrimero = 0;
             
 
             
@@ -246,10 +466,24 @@ namespace Risk_Segundo_Intento
 
         private void btn02_Click(object sender, EventArgs e)
         {
-            TemporalPosicionXSegundo = 2;
-            TemporalPosicionYSegundo = 0;
+            if (Turnos > 1)
+            {
+                if (clicks == 0)
+                {
+                    posx = 2;
+                    posy = 0;
+                }
+                pasarTropas(2, 0);
+            }
+            else
+            {
+                AgregarSoldadosP(MatrizBotones[2, 0]);
+            }
+            clicks++;
+            //TemporalPosicionXSegundo = 2;
+            //TemporalPosicionYSegundo = 0;
 
-            MovimientoDeTropas();
+            //MovimientoDeTropas();
 
             //EncontrarMatrizB(TemporalPosicionXSegundo,TemporalPosicionYSegundo);
 
@@ -266,6 +500,241 @@ namespace Risk_Segundo_Intento
             MatrizBotones[TemporalPosicionXSegundo, TemporalPosicionYSegundo].Text = Convert.ToString(ResultadoMovimiento);
 
 
+        }
+
+        private void btn03_Click(object sender, EventArgs e)
+        {
+            if (Turnos > 1)
+            {
+                if (clicks == 0)
+                {
+                    posx = 3;
+                    posy = 0;
+                }
+                pasarTropas(3, 0);
+            }
+            else
+            {
+                AgregarSoldadosP(MatrizBotones[3, 0]);
+            }
+            clicks++;
+        }
+
+        private void btn11_Click(object sender, EventArgs e)
+        {
+            if (Turnos > 1)
+            {
+                if (clicks == 0)
+                {
+                    posx = 1;
+                    posy = 1;
+                }
+                pasarTropas(1, 1);
+            }
+            else
+            {
+                AgregarSoldadosP(MatrizBotones[1, 1]);
+            }
+            clicks++;
+        }
+
+        private void btn12_Click(object sender, EventArgs e)
+        {
+            if (Turnos > 1)
+            {
+                if (clicks == 0)
+                {
+                    posx = 2;
+                    posy = 1;
+                }
+                pasarTropas(2, 1);
+            }
+            else
+            {
+                AgregarSoldadosP(MatrizBotones[2, 1]);
+            }
+            clicks++;
+        }
+
+        private void btn13_Click(object sender, EventArgs e)
+        {
+            if (Turnos > 1)
+            {
+                if (clicks == 0)
+                {
+                    posx = 3;
+                    posy = 1;
+                }
+                pasarTropas(3, 1);
+            }
+            else
+            {
+                AgregarSoldadosP(MatrizBotones[3, 1]);
+            }
+            clicks++;
+        }
+
+        private void btn21_Click(object sender, EventArgs e)
+        {
+            if (Turnos > 1)
+            {
+                if (clicks == 0)
+                {
+                    posx = 1;
+                    posy = 2;
+                }
+                pasarTropas(1, 2);
+            }
+            else
+            {
+                AgregarSoldadosP(MatrizBotones[1, 2]);
+            }
+            clicks++;
+        }
+
+        private void btn22_Click(object sender, EventArgs e)
+        {
+            if (Turnos > 1)
+            {
+                if (clicks == 0)
+                {
+                    posx = 2;
+                    posy = 2;
+                }
+                pasarTropas(2, 2);
+            }
+            else
+            {
+                AgregarSoldadosP(MatrizBotones[2, 2]);
+            }
+            clicks++;
+        }
+
+        private void btn23_Click(object sender, EventArgs e)
+        {
+            if (Turnos > 1)
+            {
+                if (clicks == 0)
+                {
+                    posx = 3;
+                    posy = 2;
+                }
+                pasarTropas(3, 2);
+            }
+            else
+            {
+                AgregarSoldadosP(MatrizBotones[3, 2]);
+            }
+            clicks++;
+        }
+
+        private void btn31_Click(object sender, EventArgs e)
+        {
+            if (Turnos > 1)
+            {
+                if (clicks == 0)
+                {
+                    posx = 1;
+                    posy = 3;
+                }
+                pasarTropas(1, 3);
+            }
+            else
+            {
+                AgregarSoldadosP(MatrizBotones[1, 3]);
+            }
+            clicks++;
+        }
+
+        private void btn32_Click(object sender, EventArgs e)
+        {
+            if (Turnos > 1)
+            {
+                if (clicks == 0)
+                {
+                    posx = 2;
+                    posy = 3;
+                }
+                pasarTropas(2, 3);
+            }
+            else
+            {
+                AgregarSoldadosP(MatrizBotones[2, 3]);
+            }
+            clicks++;
+        }
+
+        private void btn33_Click(object sender, EventArgs e)
+        {
+            if (Turnos > 1)
+            {
+                if (clicks == 0)
+                {
+                    posx = 3;
+                    posy = 3;
+                }
+                pasarTropas(3, 3);
+            }
+            else
+            {
+                AgregarSoldadosP(MatrizBotones[3, 3]);
+            }
+            clicks++;
+        }
+
+        private void domainUpDown1_SelectedItemChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnAgregarTropas_Click(object sender, EventArgs e)
+        {
+            
+            AgregarTropasIdeaRoma1 = Convert.ToInt32(txtMatriz1.Text);
+            AgregarTropasIdeaRoma2 = Convert.ToInt32(txtMatriz2.Text);
+
+            NumeroTotal = Convert.ToInt32(DUDNumerodeTropas.Text);
+
+            if ((AgregarTropasIdeaRoma1 > -1) && (AgregarTropasIdeaRoma2 > -1) && (AgregarTropasAlTurno > 0))
+            {
+
+
+                if (MatrizBotones[AgregarTropasIdeaRoma1,AgregarTropasIdeaRoma2].BackColor == Color.FromArgb(0, 200, 0))
+                {
+                    NumeroBoton = Convert.ToInt32(MatrizBotones[AgregarTropasIdeaRoma1,AgregarTropasIdeaRoma2].Text);
+                    NumeroBoton = NumeroBoton + NumeroTotal;
+                    AgregarTropasAlTurno = AgregarTropasAlTurno - NumeroTotal;
+                    MatrizBotones[AgregarTropasIdeaRoma1, AgregarTropasIdeaRoma2].Text = Convert.ToString(NumeroBoton);
+                    lblAgregarTropasTotales.Text = Convert.ToString(AgregarTropasAlTurno);
+                }
+                else
+                {
+                    MessageBox.Show("Enseñar un color correcto");
+                }
+            }
+            else
+            {
+                MessageBox.Show("Error en la posicion o se excedio de tropas");
+            }
+
+        }
+
+        public void NumeroDeTropasAAgregar()
+        {
+            for (int i = 0; i < 5; i++)
+            {
+                for (int j = 0; j < 4; j++)
+                {
+
+                    if (MatrizBotones[i, j].BackColor == Color.FromArgb(0, 200, 0))
+                    {
+                        AgregarTropasAlTurno = AgregarTropasAlTurno + 2;
+                    }
+
+
+
+                }
+            }
         }
 
 
