@@ -67,7 +67,7 @@ namespace Risk_Segundo_Intento
             
 
         }
-
+        Random botonIA = new Random();
         private void btnTurnoSiguiente_Click(object sender, EventArgs e)
         {
             clicks = 0;
@@ -88,8 +88,31 @@ namespace Risk_Segundo_Intento
             NumeroDeTropasAAgregar();
 
             lblAgregarTropasTotales.Text = Convert.ToString(AgregarTropasAlTurno);
-            
 
+            if (Turnos % 2 == 0)
+            {
+                for (int i = 0; i < 10; i++)
+                {
+                    switch (botonIA.Next(1,5))
+                    {
+                        case 1:
+                            btnIaP1_Click(sender, e);
+                            break;
+                        case 2:
+                            btnIaP2_Click(sender, e);
+                            break;
+                        case 3:
+                            btnIaP3_Click(sender, e);
+                            break;
+                        case 4:
+                            btnIaP4_Click(sender, e);
+                            break;
+                        default:
+                            break;
+                    }
+                }
+
+            }
         }
 
         public void IngresarBotones()
@@ -186,7 +209,7 @@ namespace Risk_Segundo_Intento
         int clicks = 0;
         private void btnP1FirstCountry_Click(object sender, EventArgs e)
         {
-            if (Turnos > 1)
+            if (Turnos > 2)
             {
                 
                 if (clicks == 0)
@@ -276,7 +299,7 @@ namespace Risk_Segundo_Intento
 
         private void btnP1SecondCountry_Click(object sender, EventArgs e)
         {
-            if (Turnos > 1)
+            if (Turnos > 2)
             {
                 if (clicks == 0)
                 {
@@ -295,7 +318,7 @@ namespace Risk_Segundo_Intento
 
         private void btnP1ThirdCountry_Click(object sender, EventArgs e)
         {
-            if (Turnos > 1)
+            if (Turnos > 2)
             {
                 if (clicks == 0)
                 {
@@ -314,7 +337,7 @@ namespace Risk_Segundo_Intento
 
         private void btnP1FourthCountry_Click(object sender, EventArgs e)
         {
-            if (Turnos > 1)
+            if (Turnos > 2)
             {
                 if (clicks == 0)
                 {
@@ -333,7 +356,7 @@ namespace Risk_Segundo_Intento
 
         private void btnIaP1_Click(object sender, EventArgs e)
         {
-            if (Turnos > 1)
+            if (Turnos > 2)
             {
                 if (clicks == 0)
                 {
@@ -352,7 +375,7 @@ namespace Risk_Segundo_Intento
 
         private void btnIaP2_Click(object sender, EventArgs e)
         {
-            if (Turnos > 1)
+            if (Turnos > 2)
             {
                 if (clicks == 0)
                 {
@@ -371,7 +394,7 @@ namespace Risk_Segundo_Intento
 
         private void btnIaP3_Click(object sender, EventArgs e)
         {
-            if (Turnos > 1)
+            if (Turnos > 2)
             {
                 if (clicks == 0)
                 {
@@ -390,7 +413,7 @@ namespace Risk_Segundo_Intento
 
         private void btnIaP4_Click(object sender, EventArgs e)
         {
-            if (Turnos > 1)
+            if (Turnos > 2)
             {
                 if (clicks == 0)
                 {
@@ -443,7 +466,7 @@ namespace Risk_Segundo_Intento
 
         private void btn01_Click(object sender, EventArgs e)
         {
-            if (Turnos > 1)
+            if (Turnos > 2)
             {
                 if (clicks == 0)
                 {
@@ -466,7 +489,7 @@ namespace Risk_Segundo_Intento
 
         private void btn02_Click(object sender, EventArgs e)
         {
-            if (Turnos > 1)
+            if (Turnos > 2)
             {
                 if (clicks == 0)
                 {
@@ -504,7 +527,7 @@ namespace Risk_Segundo_Intento
 
         private void btn03_Click(object sender, EventArgs e)
         {
-            if (Turnos > 1)
+            if (Turnos > 2)
             {
                 if (clicks == 0)
                 {
@@ -522,7 +545,7 @@ namespace Risk_Segundo_Intento
 
         private void btn11_Click(object sender, EventArgs e)
         {
-            if (Turnos > 1)
+            if (Turnos > 2)
             {
                 if (clicks == 0)
                 {
@@ -540,7 +563,7 @@ namespace Risk_Segundo_Intento
 
         private void btn12_Click(object sender, EventArgs e)
         {
-            if (Turnos > 1)
+            if (Turnos > 2)
             {
                 if (clicks == 0)
                 {
@@ -558,7 +581,7 @@ namespace Risk_Segundo_Intento
 
         private void btn13_Click(object sender, EventArgs e)
         {
-            if (Turnos > 1)
+            if (Turnos > 2)
             {
                 if (clicks == 0)
                 {
@@ -576,7 +599,7 @@ namespace Risk_Segundo_Intento
 
         private void btn21_Click(object sender, EventArgs e)
         {
-            if (Turnos > 1)
+            if (Turnos > 2)
             {
                 if (clicks == 0)
                 {
@@ -594,7 +617,7 @@ namespace Risk_Segundo_Intento
 
         private void btn22_Click(object sender, EventArgs e)
         {
-            if (Turnos > 1)
+            if (Turnos > 2)
             {
                 if (clicks == 0)
                 {
@@ -612,7 +635,7 @@ namespace Risk_Segundo_Intento
 
         private void btn23_Click(object sender, EventArgs e)
         {
-            if (Turnos > 1)
+            if (Turnos > 2)
             {
                 if (clicks == 0)
                 {
@@ -630,7 +653,7 @@ namespace Risk_Segundo_Intento
 
         private void btn31_Click(object sender, EventArgs e)
         {
-            if (Turnos > 1)
+            if (Turnos > 2)
             {
                 if (clicks == 0)
                 {
@@ -648,7 +671,7 @@ namespace Risk_Segundo_Intento
 
         private void btn32_Click(object sender, EventArgs e)
         {
-            if (Turnos > 1)
+            if (Turnos > 2)
             {
                 if (clicks == 0)
                 {
@@ -666,7 +689,7 @@ namespace Risk_Segundo_Intento
 
         private void btn33_Click(object sender, EventArgs e)
         {
-            if (Turnos > 1)
+            if (Turnos > 2)
             {
                 if (clicks == 0)
                 {
